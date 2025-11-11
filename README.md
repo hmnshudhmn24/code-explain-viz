@@ -1,49 +1,61 @@
----
-language:
-  - en
-license: apache-2.0
-tags:
-  - code-explanation
-  - visualization
-  - mermaid
-  - codet5
-  - developer-tools
-pipeline_tag: text-generation
-library_name: transformers
-base_model: Salesforce/codet5-small
----
+# ⚙️ CODE-EXPLAIN-VIZ
 
-# code-explain-viz
+> 🧠 **Explain. Visualize. Test.** — Turn Python code into clear explanations, flowcharts, and test templates.
 
-**Short:** `code-explain-viz` explains functions, generates step-by-step reasoning, creates a Mermaid flowchart of control flow, and suggests unit tests — combining LLM-generated explanations with deterministic AST-based visualizations.
 
-## Quick start
+## 🚀 Quick Start
 
-1. Install requirements:
+1️⃣ **Install dependencies:**
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Run CLI demo:
+2️⃣ **Run the CLI demo:**
 ```bash
 python cli.py --file data_examples/example_code.py
 ```
 
-3. Copy the Mermaid flowchart text printed by CLI into a Mermaid live editor (https://mermaid.live) or render with mermaid-cli to see the visual flowchart.
+3️⃣ **Visualize your code:**
+👉 Copy the **Mermaid flowchart** text printed by the CLI  
+👉 Paste it into [Mermaid Live Editor](https://mermaid.live)  
+👉 Or render it using **mermaid-cli** to see your control flow visually!
 
-## What you get
-- `short` one-line explanation
-- `detailed` explanation (multi-line)
-- `mermaid` flowchart text describing control flow
-- `unit_tests` template (pytest)
 
-## How it works
-- A sequence-to-sequence model (CodeT5) generates natural language explanations from code.
-- `viz_generator.py` parses the function AST and produces a reliable mermaid flowchart.
-- Combining both yields both human-friendly narrative and precise structural view.
+## 💡 What You Get
 
-## Train / Fine-tune
-Use `train_docgen.py` with a JSONL dataset (each line: `{"code": "...", "doc": "..."}`).
+| Output | Description |
+|--------|--------------|
+| 📝 **short** | One-line summary of what the function does |
+| 📖 **detailed** | Step-by-step explanation of the logic |
+| 🧩 **mermaid** | Mermaid-based flowchart of control flow |
+| 🧪 **unit_tests** | Auto-generated pytest template |
 
-## License
-Apache-2.0
+
+## 🔍 How It Works
+
+✨ **LLM + AST Magic**
+
+- 🤖 A **CodeT5 model** generates natural-language explanations from source code.  
+- 🧠 `viz_generator.py` parses your function’s **AST** (Abstract Syntax Tree) to produce a **Mermaid flowchart**.  
+- 🔗 Combining both gives you a **human-friendly explanation** + a **deterministic code visualization**.
+
+
+## 🧬 Train / Fine-tune
+
+Fine-tune your own model using:
+```bash
+python train_docgen.py --data data/train_data.jsonl
+```
+
+📁 **Dataset format (JSONL):**
+Each line should contain:
+```json
+{"code": "...", "doc": "..."}
+```
+
+## 🎯 Summary
+
+**code-explain-viz** helps you:
+✅ Understand code with AI-powered explanations  
+✅ Visualize logic flow clearly with Mermaid diagrams  
+✅ Auto-generate unit test templates for quick validation
